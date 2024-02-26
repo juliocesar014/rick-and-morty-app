@@ -1,4 +1,5 @@
-# Getting Started with Create React App
+# Ricky and Morty App
+Criado por Júlio César Agripino
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

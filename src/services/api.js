@@ -2,25 +2,25 @@ import axios from 'axios';
 
 const BASE_URL = 'https://rickandmortyapi.com/api';
 
-export const getCharacters = async () => {
+export const getCharacters = async (page) => {
     try {
-        const response = await axios.get(`${BASE_URL}/character`);
-        return response.data.results;
+        const response = await axios.get(`${BASE_URL}/character?page=${page}`);
+        return response.data;
     } catch (error) {
         console.error('Error fetching characters:', error);
         throw error;
     }
 };
 
-export const getEpisodes = async () => {
+export const getEpisodes = async (page) => {
     try {
-        const response = await axios.get(`${BASE_URL}/episode`);
-        return response.data.results;
+        const response = await axios.get(`${BASE_URL}/episode?page=${page}`);
+        return response.data;
     } catch (error) {
         console.error('Error fetching episodes:', error);
         throw error;
     }
-};
+}
 
 export const getCharacterById = async (characterId) => {
     try {
@@ -57,15 +57,15 @@ export const getCharactersByEpisode = async (episodeId) => {
 };
 
 
-export const getLocations = async () => {
+export const getLocations = async (page) => {
     try {
-        const response = await axios.get(`${BASE_URL}/location`);
-        return response.data.results;
+        const response = await axios.get(`${BASE_URL}/location?page=${page}`);
+        return response.data;
     } catch (error) {
         console.error('Error fetching locations:', error);
         throw error;
     }
-}
+};
 
 export const getLocationById = async (locationId) => {
     try {
@@ -81,7 +81,7 @@ export const getCharactersByLocation = async (locationId) => {
     try {
         const response = await axios.get(`${BASE_URL}/location/${locationId}`);
         const residentUrls = response.data.residents;
-        const characterIds = residentUrls.map(url   => url.split('/').pop());
+        const characterIds = residentUrls.map(url => url.split('/').pop());
         return characterIds;
     } catch (error) {
         console.error(`Error fetching characters in location ${locationId}:`, error);
