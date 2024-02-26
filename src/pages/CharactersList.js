@@ -38,7 +38,7 @@ const CharacterList = () => {
       </div>
       <div className="characters">
         {characters.map(character => (
-          <Link key={character.id} to={`/characters/${character.id}`}>
+          <Link key={character.id} to={`/character/${character.id}`}>
             <CharacterCard character={character} />
           </Link>
         ))}
