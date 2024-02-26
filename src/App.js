@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import CharacterList from '../src/pages/CharactersList';
+import CharacterDetails from '../src/pages/CharacterDetail';
+import EpisodeList from '../src/pages/EpisodesList';
+import EpisodeDetail from '../src/pages/EpisodeDetail';
+import LocationDetail from '../src/pages/LocationDetail';
+import LocationList from '../src/pages/LocationsList';
+import Navbar from './components/NavBar';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<CharacterList />} />
+        <Route path="/characters" element={<CharacterList />} />
+        <Route path="/character/:id" element={<CharacterDetails />} />
+        <Route path="/episodes" element={<EpisodeList />} />
+        <Route path="/episodes/:id" element={<EpisodeDetail />} />
+        <Route path="/locations" element={<LocationList />} />
+        <Route path="/locations/:id" element={<LocationDetail />} />
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
